@@ -1,0 +1,168 @@
+/* Import de polices */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* CSS Reset */
+*,*::before,*::after {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+/* Variables CSS */
+:root {
+ --display: "Lora", serif;
+ --displayWeight:600;
+ --displaySize:28px;
+ --headingSize:calc(28px*0.809);
+ --body: "Kanit", serif;
+ --bodyWeight:300;
+ --bodySize:16px;
+}
+
+/* Style général */
+* {
+ font-family: var(--body);
+ font-weight: var(--bodyWeight);
+}
+
+body {
+ background-color: #F9F9F9;
+}
+
+h1, h2 {
+ font-family: var(--display);
+ font-weight: var(--displayWeight);
+}
+
+h1 {
+ font-size: var(--displaySize);
+ text-align: center;
+}
+
+h2 {
+ font-size: var(--headingSize);
+}
+
+/* Style principal */
+body {
+ >header {
+  background-color: #1414144A;
+  margin: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  >a {
+   >img {
+    max-width: 50px;
+   }
+  }
+  >nav {
+   >ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+   }
+  }
+ }
+ >main {
+ display: grid;
+ gap: 20px;
+  & img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+ }
+ >label {
+  margin: auto;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 100px;
+  border: 1px solid #141414;
+  cursor: pointer;
+  transition: background-color 250ms 150ms ease-in-out;
+  >input[type=checkbox] {
+   display: none;
+  }
+ }
+ >label:hover, label:has(input[type=checkbox]:checked) {
+  background-color: #1414144A;
+ }
+ >.sectionWrapper {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  >section {
+  padding: 20px;
+  background-color: #1414144A;
+  border-radius: 15px;
+  display: grid;
+  gap: 20px;
+  >p {
+   >a {
+    text-decoration: none;
+    color: #cb7428;
+    transition: color 250ms 150ms ease-in-out;
+   }
+   >a:hover {
+    text-decoration: underline;
+    color: #3a6310;
+   }
+  }
+  }
+ }
+ >.imgGrid {
+  place-items: center;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 20px;
+  >img {
+   border-radius: 20px;
+   aspect-ratio: 9/18;
+   filter: grayscale(1);
+   transition: scale 250ms 150ms ease-in-out, filter 250ms 400ms ease-in-out;
+  }
+  >img:hover {
+   scale: 1.025;
+   filter: grayscale(0);
+  }
+ }
+ >.imgGrid.alternative {
+  grid-template-columns: repeat(2, 3fr);
+ }
+}
+>footer {
+ background-color: #1414144A;
+ margin: 20px;
+ border-radius: 20px;
+ padding: 20px;
+ display: grid;
+ place-items: center;
+ gap: 50px;
+}
+}
+
+/* Style pour les écrans moins larges que 768px */
+@media (width <= 768px) {
+ body {
+  >header {
+   >nav {
+    >ul {
+     flex-direction: column;
+    }
+   }
+  }
+  >main {
+  >.sectionWrapper {
+   flex-direction: column;
+   >section:nth-child(2) {
+   order: -1;
+   }
+  }
+ }
+ }
+}
